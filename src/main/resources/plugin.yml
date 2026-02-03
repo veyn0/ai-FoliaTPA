@@ -1,0 +1,4 @@
+name: ai-FoliaTPA
+version: '1.0'
+main: dev.veyno.aiFoliaTPA.AiFoliaTPA
+api-version: '1.21'
