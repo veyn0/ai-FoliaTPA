@@ -1,0 +1,30 @@
+settings:
+  request-cooldown-seconds: 20
+  post-teleport-cooldown-seconds: 60
+  countdown-seconds: 3
+
+messages:
+  prefix: "<gray>[<gold>TPA</gold>]</gray> "
+  only-players: "<red>Nur Spieler können diesen Befehl ausführen.</red>"
+  usage: "{prefix}<red>Benutzung: <yellow>{usage}</yellow></red>"
+  request-self: "{prefix}<red>Du kannst dir selbst keine Anfrage senden.</red>"
+  request-offline: "{prefix}<red>Spieler <yellow>{target}</yellow> ist nicht online.</red>"
+  request-cooldown: "{prefix}<red>Bitte warte noch <yellow>{seconds}</yellow> Sekunden.</red>"
+  request-already-pending: "{prefix}<red>Es gibt bereits eine Anfrage an <yellow>{target}</yellow>.</red>"
+  request-sent: "{prefix}<green>Anfrage an <yellow>{target}</yellow> gesendet.</green>"
+  request-received: "{prefix}<yellow>{requester}</yellow> möchte sich zu dir teleportieren. <click:run_command:'/tpaccept {requester}'><green>[Annehmen]</green></click>"
+  request-received-here: "{prefix}<yellow>{requester}</yellow> möchte, dass du dich zu ihm teleportierst. <click:run_command:'/tpahereaccept {requester}'><green>[Annehmen]</green></click>"
+  accept-offline: "{prefix}<red>Spieler <yellow>{requester}</yellow> ist nicht online.</red>"
+  accept-no-request: "{prefix}<red>Keine passende Anfrage von <yellow>{requester}</yellow> gefunden.</red>"
+  accept-success: "{prefix}<green>Anfrage von <yellow>{requester}</yellow> angenommen.</green>"
+  accept-notify: "{prefix}<green>Deine Anfrage wurde von <yellow>{target}</yellow> angenommen.</green>"
+  teleport-start: "{prefix}<gray>Teleport startet in Kürze...</gray>"
+  teleport-countdown: "{prefix}<yellow>Teleport in <gold>{seconds}</gold>...</yellow>"
+  teleport-already: "{prefix}<red>Du teleportierst bereits.</red>"
+  teleport-unavailable: "{prefix}<red>Teleportation momentan nicht möglich.</red>"
+  teleport-cancel-move: "{prefix}<red>Teleportation abgebrochen, weil du dich bewegt hast.</red>"
+  teleport-cancel-dead: "{prefix}<red>Teleportation abgebrochen.</red>"
+  teleport-cancel-offline: "{prefix}<red>Teleportation abgebrochen, weil der andere Spieler nicht verfügbar ist.</red>"
+  teleport-cancel-other: "{prefix}<red>Teleportation von <yellow>{player}</yellow> wurde abgebrochen.</red>"
+  teleport-success: "{prefix}<green>Teleportiert zu <yellow>{target}</yellow>.</green>"
+  teleport-success-other: "{prefix}<green><yellow>{player}</yellow> wurde zu dir teleportiert.</green>"
