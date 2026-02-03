@@ -2,3 +2,16 @@ name: ai-FoliaTPA
 version: '1.0'
 main: dev.veyno.aiFoliaTPA.AiFoliaTPA
 api-version: '1.21'
+commands:
+  tpa:
+    description: Sendet eine Teleportanfrage zu einem Spieler.
+    usage: /tpa <player>
+  tpahere:
+    description: Sendet eine Teleportanfrage, damit ein Spieler zu dir teleportiert wird.
+    usage: /tpahere <player>
+  tpaccept:
+    description: Akzeptiert eine Teleportanfrage.
+    usage: /tpaccept <player>
+  tpahereaccept:
+    description: Akzeptiert eine Teleportanfrage für /tpahere.
+    usage: /tpahereaccept <player>
