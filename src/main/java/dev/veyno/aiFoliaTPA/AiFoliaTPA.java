@@ -34,11 +34,11 @@ public final class AiFoliaTPA extends JavaPlugin {
         }
         if (getCommand("tpaccept") != null) {
             getCommand("tpaccept").setExecutor(new AcceptRequestCommand(tpaManager, RequestType.TPA));
-            getCommand("tpaccept").setTabCompleter(new PlayerTabCompleter());
+            getCommand("tpaccept").setTabCompleter(new PendingRequestTabCompleter(tpaManager, RequestType.TPA));
         }
         if (getCommand("tpahereaccept") != null) {
             getCommand("tpahereaccept").setExecutor(new AcceptRequestCommand(tpaManager, RequestType.TPAHERE));
-            getCommand("tpahereaccept").setTabCompleter(new PlayerTabCompleter());
+            getCommand("tpahereaccept").setTabCompleter(new PendingRequestTabCompleter(tpaManager, RequestType.TPAHERE));
         }
     }
 }
