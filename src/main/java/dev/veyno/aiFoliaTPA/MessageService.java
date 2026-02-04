@@ -31,6 +31,7 @@ public class MessageService {
         String resolved = base.replace("{prefix}", prefix);
         TagResolver.Builder builder = TagResolver.builder();
         for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+            resolved = resolved.replace("{" + entry.getKey() + "}", entry.getValue());
             builder.resolver(Placeholder.parsed(entry.getKey(), entry.getValue()));
         }
         return miniMessage.deserialize(resolved, builder.build());

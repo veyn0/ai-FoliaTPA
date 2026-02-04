@@ -108,6 +108,21 @@ public class TpaManager implements Listener {
         startTeleportCountdown(teleporting, destination, request.requester());
     }
 
+    public List<String> getPendingRequesters(Player target, RequestType type) {
+        Map<UUID, TpaRequest> requests = requestsByTarget.getOrDefault(target.getUniqueId(), Map.of());
+        List<String> names = new ArrayList<>();
+        for (TpaRequest request : requests.values()) {
+            if (request.type() != type) {
+                continue;
+            }
+            Player requester = Bukkit.getPlayer(request.requester());
+            if (requester != null && requester.isOnline()) {
+                names.add(requester.getName());
+            }
+        }
+        return names;
+    }
+
     public void shutdown() {
         for (ActiveTeleport active : activeTeleports.values()) {
             active.task().cancel();
