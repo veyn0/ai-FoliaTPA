@@ -73,8 +73,11 @@ public class TpaManager implements Listener {
         lastRequestTime.put(requester.getUniqueId(), Instant.now());
 
         messages.send(requester, "request-sent", Map.of("target", target.getName()));
-        target.getScheduler().run(plugin, task -> messages.send(target, type == RequestType.TPA ? "request-received" : "request-received-here",
-            Map.of("requester", requester.getName())));
+        target.getScheduler().run(plugin,
+            task -> messages.send(target, type == RequestType.TPA ? "request-received" : "request-received-here",
+                Map.of("requester", requester.getName())),
+            () -> {
+            });
     }
 
     public void acceptRequest(Player target, String requesterName, RequestType type) {
@@ -95,7 +98,10 @@ public class TpaManager implements Listener {
         }
 
         messages.send(target, "accept-success", Map.of("requester", requester.getName()));
-        requester.getScheduler().run(plugin, task -> messages.send(requester, "accept-notify", Map.of("target", target.getName())));
+        requester.getScheduler().run(plugin,
+            task -> messages.send(requester, "accept-notify", Map.of("target", target.getName())),
+            () -> {
+            });
 
         Player teleporting = type == RequestType.TPA ? requester : target;
         Player destination = type == RequestType.TPA ? target : requester;
@@ -145,6 +151,7 @@ public class TpaManager implements Listener {
                 teleporting.playSound(teleporting.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.5f);
                 messages.send(teleporting, "teleport-countdown", Map.of("seconds", String.valueOf(remaining / 20)));
             }
+        }, () -> {
         }, 1L, 1L);
         activeTeleports.put(teleporting.getUniqueId(), new ActiveTeleport(task, destination.getUniqueId()));
         messages.send(teleporting, "teleport-start");
@@ -166,9 +173,12 @@ public class TpaManager implements Listener {
                     lastTeleportTime.put(requesterId, Instant.now());
                     messages.send(teleporting, "teleport-success", Map.of("target", destination.getName()));
                     destination.getScheduler().run(plugin, notifyTask -> messages.send(destination, "teleport-success-other",
-                        Map.of("player", teleporting.getName())));
+                        Map.of("player", teleporting.getName())), () -> {
+                    });
                 });
+            }, () -> {
             });
+        }, () -> {
         });
     }
 
